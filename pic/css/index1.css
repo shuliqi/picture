@@ -1,0 +1,120 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+ul { 
+	padding: 0; 
+	margin: 0; 
+} 
+li { 
+	list-style: none; 
+} 
+a{
+	text-decoration: 
+}
+img { 
+	border: 0; 
+}
+li{
+    list-style:none;
+}
+.slq_playsess{
+	padding: 1px;
+	width: 1000px;
+	height: 650px;
+	margin: 0px auto;
+}
+.slq_bigpic{
+	padding: 1px;
+	width: 1000px;
+	height: 450px;
+	overflow: hidden;
+	position: relative;
+	border-bottom: 3px solid #ccc; 
+/*	border: 5px solid #000;*/
+}
+.slq_prev{
+	width: 80px;
+	height: 80px;
+	margin-left: 40px;
+	margin-top:200px;
+	filter:alpha(opacity:0); 
+	opacity:0; 
+	cursor: pointer; 
+	background:url(../images/zuobtn.jpg);
+	float: left;
+	 z-index: 3000;
+	position: absolute;
+}
+.slq_next{
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin-left: 40px;
+	margin-top:180px;
+	margin-left: 800px;
+	filter:alpha(opacity:0); 
+	opacity:0; 
+	background: url(../images/youbtn.jpg);
+	z-index:3000;
+	position: absolute; 
+}
+
+.slq_left{
+	width: 500px;
+	height: 450px;
+	background: green;
+	float: left;
+	position: absolute;
+	filter: alpha(opacity:0); 
+	opacity:0; 
+	z-index:2000;
+}
+.slq_right{
+	width: 500px;
+	height: 450px;
+	background: yellow;
+	margin-left: 500px;
+	position: absolute;
+	filter: alpha(opacity:0); 
+	opacity: 0;
+	z-index:2000;
+}
+.slq_bigpic li{
+	width: 1000px;
+	height: 450px;
+	overflow: hidden;
+	position: absolute;
+	z-index:-100;
+}
+.slq_smallpic{
+	width: 1000px;
+	height: 200px;
+	overflow: hidden;
+	position:absolute;
+/*	border: 5px solid #000;*/
+}
+.slq_smallpic ul{
+	width: 1000px;
+	height: 200px;
+	background:grey;
+	overflow: hidden;
+	margin: 0px auto;
+	left: 0; 
+	position: relative;
+}
+.slq_smallpic li {
+	width: 240px;
+	height: 190px;
+	background: yellow;
+	overflow: hidden;
+	float: left;
+	filter: alpha(opacity=60); 
+    opacity: 0.6; 
+    border: 5px solid #789 ;
+}
+.slq_smallpic img{
+	width: 260px;
+	height: 200px;
+	 
+}

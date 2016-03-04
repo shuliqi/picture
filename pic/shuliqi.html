@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript"src="js/move.js">></script>
+<link rel="stylesheet" type="text/css" href="css/index1.css">
+<script>
+function getByClass(oParent,sClass){
+    var aEle = document.getElementsByTagName('*');
+    var aResult = [];
+    for (var i = 0; i < aEle.length; i++) {
+        if (aEle[i].className == sClass) {
+            aResult.push(aEle[i])
+        } 
+    };
+    return aResult;
+}
+
+
+window.onload = function(){
+    var oDiv = document.getElementById('slq_play');
+    var oUlBig = document.getElementById('slq_big_pic');
+    var oBtnPrev = getByClass(oDiv,'slq_prev')[0];
+    var oBtnNext = getByClass(oDiv,'slq_next')[0];
+    var oMarkLeft = getByClass(oDiv,'slq_left')[0];
+    var oMarkRight = getByClass(oDiv,'slq_right')[0];
+    //左右按钮
+    oBtnPrev.onmouseover = oMarkLeft.onmouseover = function (){
+        startMove(oBtnPrev,'opacity',100);
+    }
+    oBtnPrev.onmouseout = oMarkLeft.onmouseout = function (){
+        startMove(oBtnPrev,'opacity',0);
+    }
+    oBtnNext.onmouseover =oMarkRight.onmouseover = function (){
+        startMove(oBtnNext,'opacity',100);
+    }
+    oBtnNext.onmouseout = oMarkRight.onmouseout = function (){
+        startMove(oBtnNext,'opacity',0);
+    }
+   
+    //小图模糊
+    var aLiBig = oUlBig.getElementsByTagName('li');
+    var oUlSmall= document.getElementById('slq_small_pic');
+    var aLiSmall = oUlSmall.getElementsByTagName('li');
+    var now = 0 ;
+    var nowzIndex = -20 ;
+    for (var i = 0; i < aLiSmall.length; i++) {
+        aLiSmall[i].index = i
+        aLiSmall[i].onmouseover = function () {
+            startMove(this,'opacity',100);
+        }
+         aLiSmall[i].onmouseout= function () {
+            if (this.index != now) {
+             startMove(this,'opacity',60); 
+            };
+        }
+    };
+
+    //大图轮播
+    for (var i = 0; i < aLiSmall.length; i++) {
+        aLiSmall[i].onclick =  function () {
+            if (now == this.index) return;
+            now = this.index;
+            bianhua();
+        }
+    };
+
+  oBtnPrev.onclick = function () {
+    now--;
+    if (now == -1) {
+      now = aLiSmall.length - 1;
+    };
+    bianhua ();
+  };
+  oBtnNext.onclick = function () {
+     now++;
+     if (now == aLiSmall.length) {
+      now = 0;
+     };
+     bianhua();
+  };
+    function bianhua(){
+            aLiBig[now].style.zIndex =  nowzIndex++;
+             for (var i = 0; i < aLiBig.length; i++) {
+                 aLiBig[i].style.height = 0;
+             };
+             startMove(aLiBig[now],'height',450);
+             for (var i = 0; i < aLiSmall.length; i++) {
+                 startMove(aLiSmall[i],'opacity',60);
+             };
+             startMove(aLiSmall[now],'opacity',100);
+
+             oUlSmall.style.width = aLiSmall.length* aLiSmall[0].offsetWidth +'px';
+             if (now == 0) {
+                  startMove (oUlSmall,'left',0);
+              }
+             else if(now == aLiSmall.length - 2){
+                  startMove(oUlSmall,'left',-(now - 2)*aLiSmall[0].offsetWidth)
+              } 
+             else if(now == aLiSmall.length - 1){
+                  startMove(oUlSmall,'left',-(now - 3)*aLiSmall[0].offsetWidth)
+              } 
+             else{
+                  startMove(oUlSmall,'left',-(now - 1)*aLiSmall[0].offsetWidth)
+              }
+            
+    }
+   var timer = setInterval(oBtnNext.onclick,2000);
+   oDiv.onmouseover = function (){
+    clearInterval(timer);
+   }
+   oDiv.onmouseout = function(){
+    timer = setInterval(oBtnNext.onclick,2000);
+   }
+
+
+}
+</script>
+</head>
+
+<body>
+<div id="slq_play" class="slq_playsess">
+    <ul id="slq_big_pic" class="slq_bigpic">
+    	<div class="slq_prev"></div>
+    	<div class="slq_next"></div>
+    	<div class="slq_left"></div>
+    	<div class="slq_right"></div>
+    	<li style="z-index:-30;"><img src="images/1.jpg"></li>
+    	<li><img src="images/2.jpg"></li>
+    	<li><img src="images/3.jpg"></li>
+    	<li><img src="images/4.jpg"></li>
+    	<li><img src="images/5.jpg"></li>
+    	<li><img src="images/6.jpg"></li>
+    	<li><img src="images/7.jpg"></li>
+    	<li><img src="images/8.jpg"></li>
+    	<li><img src="images/9.jpg"></li>
+    	<li><img src="images/10.jpg"></li>
+    	<li><img src="images/11.jpg"></li>
+    	<li><img src="images/12.jpg"></li>
+    </ul>
+    <div class="slq_smallpic">
+    <ul  id="slq_small_pic" >
+    	<li style="filter: 100; opacity: 1;"><img src="images/1.jpg"></li>
+    	<li><img src="images/2.jpg"></li>
+    	<li><img src="images/3.jpg"></li>
+    	<li><img src="images/4.jpg"></li>
+        <li><img src="images/5.jpg"></li>
+        <li><img src="images/6.jpg"></li>
+        <li><img src="images/7.jpg"></li>
+        <li><img src="images/8.jpg"></li>
+        <li><img src="images/9.jpg"></li>
+        <li><img src="images/10.jpg"></li>
+        <li><img src="images/11.jpg"></li>
+        <li><img src="images/12.jpg"></li>
+     </ul>
+    </div>
+</div>
+</body>
+</html>
