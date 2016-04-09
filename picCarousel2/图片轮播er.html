@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script type="text/javascript" src="js/move2.js"></script>
+<script>
+window.onload = function  () {
+   var oDiv = document.getElementById('slq_play');
+   var oOl= oDiv.getElementsByTagName('ol')[0];
+   var aLi = oOl.getElementsByTagName('li');
+   var  oUl = oDiv.getElementsByTagName('ul')[0];
+   var aIagLi =  oUl.getElementsByTagName('li');
+   var now = 0;
+   for (var i = 0; i < aLi.length; i++) {
+     aLi[i].index = i;
+     aLi[i].onclick = function(){
+      now = this.index;
+      hanshu ();
+    };
+  }
+  function hanshu () {
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].style.background = '#000';
+    };
+    aLi[now].style.background= 'red';
+    startMove(oUl,{top:-550 * now});
+  }
+  function next () {
+    now ++
+    if (now == aLi.length){
+        now = 0;
+    };
+    hanshu()
+  }
+  var timer = setInterval(next,2000);
+  oDiv.onmouseover = function () {
+    clearInterval(timer);
+  }
+ oDiv.onmouseout = function () {
+    timer = setInterval(next,2000);
+  }
+
+}
+</script>
+</head>
+
+<body>
+<div id="slq_play" class="slq_playsess">
+   <ol>
+      <li style="background:red">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+   </ol>
+   <ul>
+     <li style="z-index:1;"><img src="images/1.jpg"></li>
+     <li><img src="images/2.jpg"></li>
+     <li><img src="images/3.jpg"></li>
+     <li><img src="images/4.jpg"></li>
+     <li><img src="images/5.jpg"></li>
+   </ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+*{
+	padding: 0px;
+	margin:0px;
+}
+li{
+	list-style:none;
+}
+a{
+	text-decoration: none;
+}
+.slq_playsess{
+	width: 1000px;
+	height:550px;
+	margin: 0px auto;
+	overflow: hidden;
+	margin-top:50px;
+	position: relative;
+}
+.slq_playsess ol{
+	width: 350px;
+	height:50px;
+	position: absolute;
+	margin-top: 480px;
+	margin-left:650px;
+	z-index: 2999;
+}
+.slq_playsess ol li {
+	width: 40px;
+	height:45px;
+	float: left;
+	padding-top: 15px;
+	position: relative;
+	padding-left: 20px;
+	color: white;
+    background: #000;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 3000;
+    border:1px solid white;
+}
+.slq_playsess ul{
+	width: 1000px;
+	height:550px;
+	z-index:1;
+	top: 0px;
+	position: absolute;
+}
+.slq_playsess ul li{
+	width: 1000px;
+	height:550px;
+}
+
+
